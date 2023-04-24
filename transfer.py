@@ -18,12 +18,14 @@ def main():
         data_train = r.json()
         print("Upload is complete. Dataset id is", data_train['dataset_id'])
 
-    # train a new model
-    print("Starting new model training session...")
+    # transfer learning
+    # specifies an existing model to be augmented by additional training on new data of similar shape
+    print("Starting transfer learning model training session...")
     r = requests.post(f"{API_URL}/models", headers=headers, json={
+        'base_model_id': '<YOUR_EXISTING_MODEL_ID>',
         'dataset_id': data_train['dataset_id'],
-        'strategy': 'new',
-        'name': 'my-new-model-name', # change to your desired model name
+        'strategy': 'transfer',
+        'name': 'my-transfer-model-name', # change to your desired model name
         'test_size': 0.1,
         'eval_type': 'naive-bayes',
         'channel_pick': 'combine',
