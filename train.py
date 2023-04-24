@@ -10,7 +10,7 @@ def main():
     print("Using API key", API_KEY)
 
     # upload a training dataset
-    with open('./data/lymph-train-100.zip', 'rb') as fdata:
+    with open('<PATH_TO_YOUR_DATASET_ZIP>', 'rb') as fdata:
         files = {'data': fdata}
         params = {'name': 'my-dataset-name'} # change to your desired dataset name
         print("Please wait while your dataset is being uploaded to the API...")
